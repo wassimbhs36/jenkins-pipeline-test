@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Récupère le code source à partir du dépôt Git
+                git url: 'https://github.com/ton-compte/ton-repository.git', branch: 'main'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Affiche un message indiquant que le build a commencé
+                echo 'Building...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Affiche un message pour tester le pipeline
+                echo 'Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Simule une étape de déploiement
+                echo 'Deploying to server...'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Affiche un message à la fin du pipeline, succès ou échec
+            echo 'Pipeline finished!'
+        }
+    }
+}
